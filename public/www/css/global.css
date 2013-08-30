@@ -1,0 +1,109 @@
+body {
+   padding-top: 107px;
+   background-color: #eeeff0;
+   color: #666;
+}
+
+h1,h2,h3 {
+   color: #555;
+}
+
+.ingredients {
+   float: right;
+   width: 400px;
+   margin-right: 5px;
+   margin-top: 20px;
+   margin-bottom: 20px;
+/*    border: 1px solid #ccc;
+   padding-left: 20px;
+   padding-right: 20px;
+   padding-bottom: 20px; */
+}
+
+#ingredient_alert {
+   display: none;
+}
+ 
+#ingredient_name, #ingredient_price {
+   display: inline;
+}
+
+#ingredient_name {
+   width: 160px
+}
+
+#ingredient_price {
+   width: 80px;
+}
+
+#ingredient_add {
+   display: inline;
+}
+
+.content {
+   background-color: #fff;
+   border: 1px solid #dcdad4;
+}
+
+.content.home {
+   border-top: none;
+}
+
+.container {
+   max-width: 980px;
+}
+
+.navbar-default {
+   background-color: #fff;
+   border: none;
+   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+} 
+
+.video-section {
+   margin: 0 auto;
+   max-width: 980px;
+   border-bottom: 7px solid #a85396;
+   position: relative;
+}
+
+.video-section .btn {
+   position: absolute;
+   left: 50%;
+   top: 250px;
+   margin: 0 0 0 -53px;
+}
+
+.video-section h2 {
+   color: #a85396;
+   max-width: 600px;
+   text-align: center;
+   position: absolute;
+   top: 50px;
+   margin-left: -300px;
+   left: 50%;
+   font-size: 3em;
+}
+
+.btn-zynx-purple {
+   background-color: #a85396;
+   color: #fff;
+   border-color: rgb(153, 77, 138);
+}
+
+.btn-zynx-purple:hover {
+   color: #fff;
+   background-color: rgb(132, 66, 119);
+   border-color: rgb(123, 62, 111);
+}
+
+@media ( min-width :768px) {
+   .navbar-nav {
+      margin-top: 25px;
+   }
+   .navbar-form {
+      margin-top: 25px;
+   }
+   .container>.navbar-header {
+      margin-right: 25px;
+   }
+}
