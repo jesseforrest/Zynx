@@ -32,16 +32,56 @@ class ModelIngredient
    static public function getIngredients()
    {
       $ingredients = array(
-         'Clove of Organic Garlic' => '0.67',
-         'Lemon' => '2.03',
-         'Cup of Corn' => '0.87',
-         'Chicken Breast' => '2.19',
-         'Slice of Bacon' => '0.24',
-         'Ounce of Pasta' => '0.31',
-         'Cup of Organic Olive Oil' => '1.92',
-         'Cup of Vinegar' => '1.26',
-         'Teaspoon of Salt' => '0.16',
-         'Teaspoon of Pepper' => '0.17'
+         'Clove of Garlic' => array(
+            'cost' => '0.67',
+            'is_organic' => '1',
+            'is_produce' => '1'
+         ), 
+         'Lemon' => array(
+            'cost' => '2.03',
+            'is_organic' => '0',
+            'is_produce' => '1'
+         ),    
+         'Cup of Corn' => array(
+            'cost' => '0.87',
+            'is_organic' => '0',
+            'is_produce' => '1'
+         ),
+         'Chicken Breast'  => array(
+            'cost' => '2.19',
+            'is_organic' => '0',
+            'is_produce' => '0'
+         ),
+         'Slice of Bacon' => array(
+            'cost' => '0.24',
+            'is_organic' => '0',
+            'is_produce' => '0'
+         ),
+         'Ounce of Pasta' => array(
+            'cost' => '0.31',
+            'is_organic' => '0',
+            'is_produce' => '0'
+         ),
+         'Cup of Olive Oil' => array(
+            'cost' => '1.92',
+            'is_organic' => '1',
+            'is_produce' => '0'
+         ),
+         'Cup of Vinegar' => array(
+            'cost' => '1.26',
+            'is_organic' => '0',
+            'is_produce' => '0'
+         ),
+         'Teaspoon of Salt' => array(
+            'cost' => '0.16',
+            'is_organic' => '0',
+            'is_produce' => '0'
+         ),
+         'Teaspoon of Pepper' => array(
+            'cost' => '0.17',
+            'is_organic' => '0',
+            'is_produce' => '0'
+         )
       );
       
       ksort($ingredients);

@@ -17,14 +17,18 @@ h1,h2,h3 {
 }
 
 .ingredients p {
-   line-height: 12px;   
+   line-height: 12px;
 }
 
-#ingredient_alert {
+#ingredient_success, #ingredient_alert {
    display: none;
 }
- 
-#ingredient_name, #ingredient_price {
+
+label {
+   font-weight: normal;
+}
+
+#ingredient_name,#ingredient_price {
    display: inline;
 }
 
@@ -37,7 +41,7 @@ h1,h2,h3 {
 }
 
 #ingredient_add {
-   display: inline;
+   margin-top: 20px;
 }
 
 .recipes {
@@ -45,7 +49,11 @@ h1,h2,h3 {
    width: 520px;
 }
 
-#recipe_add, #ingredient_add_small {
+.align_right {
+   text-align: right;
+}
+
+#recipe_add,#ingredient_add_small {
    float: right;
 }
 
@@ -54,7 +62,25 @@ h1,h2,h3 {
 }
 
 #add_ingredients {
-   display: none;  
+   display: none;
+}
+
+.well {
+   font-size: 12px;
+}
+
+#is_organic {
+   margin-top: 20px;
+}
+
+.copy {
+   text-align: center;
+   margin-bottom: 12px;
+   font-size: 11px;
+}
+
+.sales_tax {
+   margin-top: 20px;
 }
 
 .recipe_remove {
@@ -82,7 +108,7 @@ h1,h2,h3 {
    background-color: #fff;
    border: none;
    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
-} 
+}
 
 .video-section {
    margin: 0 auto;

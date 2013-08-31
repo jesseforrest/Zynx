@@ -34,24 +34,24 @@ class ModelRecipe
    {
       $recipes = array(
          'Recipe 1' => array(
-            'Clove of Organic Garlic' => 1,
+            'Clove of Garlic' => 1,
             'Lemon' => 1,
-            'Cup of Organic Olive Oil' => 0.75,
+            'Cup of Olive Oil' => 0.75,
             'Teaspoon of Salt' => 0.75,
             'Teaspoon of Pepper' => 0.5
          ),
          'Recipe 2' => array(
-            'Clove of Organic Garlic' => 1,
+            'Clove of Garlic' => 1,
             'Chicken Breast' => 4,
-            'Cup of Organic Olive Oil' => 0.5,
+            'Cup of Olive Oil' => 0.5,
             'Cup of Vinegar' => 0.5
          ),
          'Recipe 3' => array(
-            'Clove of Organic Garlic' => 1,
+            'Clove of Garlic' => 1,
             'Cup of Corn' => 4,
             'Slice of Bacon' => 4,
             'Ounce of Pasta' => 8,
-            'Cup of Organic Olive Oil' => 0.33,
+            'Cup of Olive Oil' => 0.33,
             'Teaspoon of Salt' => 1.25,
             'Teaspoon of Pepper' => 0.75
          )           

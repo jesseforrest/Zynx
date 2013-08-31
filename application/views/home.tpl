@@ -12,9 +12,10 @@
       
       <div id="add_ingredients" class="panel panel-success">
          <div class="panel-heading">
-      	   <h3 class="panel-title">Add Ingredients</h3>
+      	   <h3 class="panel-title">Add Ingredient</h3>
          </div>
-         <div class="panel-body">      
+         <div class="panel-body">
+            <div id="ingredient_success" class="alert alert-success"></div>      
          	<div id="ingredient_alert" class="alert alert-danger"></div>
          	1 <input type="text"
          	   class="form-control" 
@@ -24,11 +25,27 @@
       	      class="form-control" 
          	   id="ingredient_price"
          	   placeholder="0.00"/>
-            <input 
-               type="button"
-               class="btn btn-success"
-               id="ingredient_add"
-               value="Add"/>
+            <div>
+               <input 
+                  type="checkbox"
+                  id="is_organic"
+                  value="1"/>
+               <label for="is_organic">Ingredient is Organic</label> 
+            </div>
+            <div>
+               <input 
+                  type="checkbox"
+                  id="is_produce"
+                  value="1"/>
+               <label for="is_produce">Ingredient is Produce</label> 
+            </div>
+            <div class="align_right">
+               <input 
+                  type="button"
+                  class="btn btn-success"
+                  id="ingredient_add"
+                  value="Add Ingredient"/>
+            </div>
          </div>
       </div>
       
@@ -38,7 +55,7 @@
                type="button"
                class="btn btn-sm btn-success"
                id="ingredient_add_small"
-               value="Add Ingredients"/>
+               value="Add Ingredient"/>
       	   <h3 class="panel-title ingredients_title">Ingredients</h3>
          </div>
          <div class="panel-body">
@@ -62,4 +79,12 @@
 			<div class="recipes_list"></div>
    	</div>
 	</div>
+	
+	<div class="well">
+	   <p><sup>1</sup> Sales Tax (8.6% of the total price rounded up to the nearest 7 cents, applies to everything except produce)</p>
+      <p><sup>2</sup> Wellness Discount (-5% of the total price rounded up to the nearest cent, applies only to organic items)</p>
+      <p><sup>3</sup> Total Cost (should include the sales tax and the discount)</p>
+	</div>
+	
+	<div class="copy">Copyright &copy; 2013 Jesse Forrest</div>
 </div>
