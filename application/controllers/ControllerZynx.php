@@ -77,7 +77,7 @@ class ControllerZynx extends Controller
    protected function setupJs()
    {
       $this->page->setJavascriptUrls(
-         Url::getProtocol() . '://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+         Revision::getUrl('/js/jquery-1.10.2.min.js'),
          Revision::getUrl('/js/bootstrap.js'));
    }
 }

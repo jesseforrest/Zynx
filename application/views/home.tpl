@@ -7,36 +7,59 @@
 		alt="Zynx Splash" />
 </div>
 <div class="container content home">
-   <div class="ingredients panel panel-default" 
+   <div class="ingredients" 
       data-json="<?=htmlentities(json_encode($view['ingredients'])); ?>">
-      <div class="panel-heading">
-   	   <h3 class="panel-title">Available Ingredients</h3>
+      
+      <div id="add_ingredients" class="panel panel-success">
+         <div class="panel-heading">
+      	   <h3 class="panel-title">Add Ingredients</h3>
+         </div>
+         <div class="panel-body">      
+         	<div id="ingredient_alert" class="alert alert-danger"></div>
+         	1 <input type="text"
+         	   class="form-control" 
+         	   id="ingredient_name"
+         	   placeholder="Ingredient Name"/> = 
+      	   $<input type="text"
+      	      class="form-control" 
+         	   id="ingredient_price"
+         	   placeholder="0.00"/>
+            <input 
+               type="button"
+               class="btn btn-success"
+               id="ingredient_add"
+               value="Add"/>
+         </div>
       </div>
-      <div class="panel-body">
-      	<div class="ingredients_list">
-      	</div>
-   
-      	<br/>
-      	<h4>Add Another Ingredient</h4>
-      	<div id="ingredient_alert" class="alert alert-danger"></div>
-      	1 <input type="text"
-      	   class="form-control" 
-      	   id="ingredient_name"
-      	   placeholder="Ingredient Name"/> = 
-   	   $<input type="text"
-   	      class="form-control" 
-      	   id="ingredient_price"
-      	   placeholder="0.00"/>
-         <input 
-            type="button"
-            class="btn btn-success"
-            id="ingredient_add"
-            value="Add"/>
+      
+      <div class="panel panel-default">
+         <div class="panel-heading">
+	         <input 
+               type="button"
+               class="btn btn-sm btn-success"
+               id="ingredient_add_small"
+               value="Add Ingredients"/>
+      	   <h3 class="panel-title ingredients_title">Ingredients</h3>
+         </div>
+         <div class="panel-body">
+         	<div class="ingredients_list">
+         	</div>
+         </div>
       </div>
 	</div>
 	
 	<div class="recipes" data-json="<?=htmlentities(json_encode($view['recipes'])); ?>">
-   	<h1>Recipes</h1>
-   	<p>Click on a recipe below to see details about it.</p>
+	   <div class="list-group">
+	      <div class="list-group-item active">
+	         <input 
+               type="button"
+               class="btn btn-sm btn-success"
+               id="recipe_add"
+               value="Add Recipe"/>
+         	<h1 class="list-group-item-heading">Recipes</h1>
+				<p class="list-group-item-text">Below are all of your available recipes.</p>
+			</div>
+			<div class="recipes_list"></div>
+   	</div>
 	</div>
 </div>

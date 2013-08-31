@@ -14,10 +14,10 @@ h1,h2,h3 {
    margin-right: 5px;
    margin-top: 20px;
    margin-bottom: 20px;
-/*    border: 1px solid #ccc;
-   padding-left: 20px;
-   padding-right: 20px;
-   padding-bottom: 20px; */
+}
+
+.ingredients p {
+   line-height: 12px;   
 }
 
 #ingredient_alert {
@@ -40,6 +40,29 @@ h1,h2,h3 {
    display: inline;
 }
 
+.recipes {
+   margin-top: 20px;
+   width: 520px;
+}
+
+#recipe_add, #ingredient_add_small {
+   float: right;
+}
+
+.ingredients_title {
+   font-size: 30px;
+}
+
+#add_ingredients {
+   display: none;  
+}
+
+.recipe_remove {
+   float: right;
+   margin-left: 6px;
+   display: none;
+}
+
 .content {
    background-color: #fff;
    border: 1px solid #dcdad4;
@@ -47,6 +70,8 @@ h1,h2,h3 {
 
 .content.home {
    border-top: none;
+   top: -20px;
+   position: relative;
 }
 
 .container {
@@ -62,8 +87,9 @@ h1,h2,h3 {
 .video-section {
    margin: 0 auto;
    max-width: 980px;
-   border-bottom: 7px solid #a85396;
+   border-bottom: 7px solid #428bca;
    position: relative;
+   top: -20px;
 }
 
 .video-section .btn {
@@ -74,7 +100,7 @@ h1,h2,h3 {
 }
 
 .video-section h2 {
-   color: #a85396;
+   color: #428bca;
    max-width: 600px;
    text-align: center;
    position: absolute;
@@ -85,7 +111,7 @@ h1,h2,h3 {
 }
 
 .btn-zynx-purple {
-   background-color: #a85396;
+   background-color: #428bca;
    color: #fff;
    border-color: rgb(153, 77, 138);
 }
