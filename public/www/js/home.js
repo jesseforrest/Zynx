@@ -71,9 +71,20 @@ $(document).ready(function() {
                   //@todo Remove later
                   + ' = $' + ingredient_cost.toFixed(2)
                + '</p>');
-            sub_total += ingredient_cost; 
+            sub_total += ingredient_cost;
+            if (ingredients[ingredient_name].is_produce == '0') {
+               tax += ingredient_cost;
+            }
+            if (ingredients[ingredient_name].is_organic == '1') {
+               discount += ingredient_cost;
+            }
          });
+         tax = tax * .086;
+         //@todo move up to nearest .07 cents
          
+         discount = discount * .05;
+         
+         total = sub_total + tax - discount;
          $('.recipes .list-group-item').last().append(''
                + '<div>'
                   + 'Sub Total: $' + sub_total.toFixed(2)
