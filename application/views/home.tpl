@@ -9,7 +9,6 @@
 <div class="container content home">
    <div class="ingredients" 
       data-json="<?=htmlentities(json_encode($view['ingredients'])); ?>">
-      
       <div id="add_ingredients" class="panel panel-success">
          <div class="panel-heading">
       	   <h3 class="panel-title">Add Ingredient</h3>

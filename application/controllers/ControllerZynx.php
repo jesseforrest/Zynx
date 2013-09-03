@@ -58,6 +58,26 @@ class ControllerZynx extends Controller
    }
    
    /**
+    * This will show the tests page
+    *
+    * @return void
+    */
+   public function tests()
+   {
+      $this->page->setTitle(PRODUCT_NAME . ' - Recipe Calculator Tests');
+      $this->page->setKeywords(PRODUCT_NAME, 'recipe', 'calculator', 'tests');
+      $this->page->setDescription('The unit tests.');
+      $this->page->setJavascriptUrls(
+         Revision::getUrl('/js/qunit-1.12.0.js'),
+         Revision::getUrl('/js/home.js'),
+         Revision::getUrl('/js/tests.js'));
+      $this->page->setCssUrls(
+         Revision::getUrl('/css/qunit-1.12.0.css'));
+      $this->page->setView('application/views/tests.tpl');
+      $this->page->printPage();
+   }
+   
+   /**
     * Setup the CSS that's included by default in pages
     *
     * @return void

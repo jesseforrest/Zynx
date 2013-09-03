@@ -67,6 +67,14 @@ class Routes
          'application/controllers/ControllerZynx.php',
          'ControllerZynx',
          'home');
+      
+      // Example URL: zynx.com/tests
+      $this->router->setRoute(
+         '/tests',
+         false,
+         'application/controllers/ControllerZynx.php',
+         'ControllerZynx',
+         'tests');
    }
 
    /**
