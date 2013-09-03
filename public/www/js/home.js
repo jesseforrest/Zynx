@@ -63,6 +63,7 @@ $(document).ready(function() {
          tax = 0.00,
          discount = 0.00,
          total = 0.00;
+      $('.recipes_list').html("");
       $.each(recipes, function(name, contents) {
          sub_total = 0.00;
          tax = 0.00;
@@ -84,7 +85,6 @@ $(document).ready(function() {
             $('.recipes .list-group-item').last().append(''
                + '<p class="list-group-item-text">'
                   + ingredient_amount + ' ' + ingredient_name
-                  //@todo Remove later
                   + ' = $' + ingredient_cost
                + '</p>');
             sub_total += ingredient_cost;
