@@ -157,17 +157,20 @@ $(document).ready(function() {
    /**
     * Remove recipe clicked
     */
-   $(".recipe_remove").click(function(){
+   $(".recipes_list").on('click', '.recipe_remove', function(){
       $(this).parent().remove();
    });
    
-   $(".list-group-item").hover(
+   $(".recipes_list").on('mouseenter', '.list-group-item', 
       function(el){
          $(this).children(".btn").not("#recipe_add_small").fadeIn('fast');
-      }, function(){
-         $(this).children(".btn").not("#recipe_add_small").hide();
       }
    );
+   $(".recipes_list").on('mouseleave', '.list-group-item', 
+         function(){
+            $(this).children(".btn").not("#recipe_add_small").hide();
+         }
+      );
 
    $("#recipe_add_small").click(function(){
       $(this).fadeOut('fast');
