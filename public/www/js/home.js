@@ -41,6 +41,33 @@ $(document).ready(function() {
       });      
    };
    
+   /**
+    * Move up to nearest .07 cents
+    * 
+    * @return float
+    */
+   $.fn.nearestSevenCents = function(amount){
+      return ((Math.ceil((amount * 100) / 7) * 7) / 100);
+   };
+   
+   /**
+    * Round up to nearest cent
+    * 
+    * @return float
+    */
+   $.fn.ceilNearestCent = function(amount){
+      return ((Math.ceil((amount * 100) / 1) * 1) / 100);
+   };
+   
+   /**
+    * Round to nearest cent
+    * 
+    * @return float
+    */
+   $.fn.roundNearestCent = function(amount){
+      return ((Math.round((amount * 100) / 1) * 1) / 100);
+   };
+   
    // If ingredients exist
    if ($('.ingredients').length) {
       $(this).refreshIngredients();
@@ -55,6 +82,11 @@ $(document).ready(function() {
          discount = 0.00,
          total = 0.00;
       $.each(recipes, function(name, contents) {
+         sub_total = 0.00;
+         tax = 0.00;
+         discount = 0.00;
+         total = 0.00;
+         
          $('.recipes_list').append(''
             + '<div class="list-group-item">'
                + '<input ' 
@@ -65,11 +97,13 @@ $(document).ready(function() {
             + '</div>');
          $.each(contents, function(ingredient_name, ingredient_amount) {
             var ingredient_cost = ingredient_amount * ingredients[ingredient_name].cost;
+            ingredient_cost = $(this).ceilNearestCent(ingredient_cost);
+            
             $('.recipes .list-group-item').last().append(''
                + '<p class="list-group-item-text">'
                   + ingredient_amount + ' ' + ingredient_name
                   //@todo Remove later
-                  + ' = $' + ingredient_cost.toFixed(2)
+                  + ' = $' + ingredient_cost
                + '</p>');
             sub_total += ingredient_cost;
             if (ingredients[ingredient_name].is_produce == '0') {
@@ -79,21 +113,20 @@ $(document).ready(function() {
                discount += ingredient_cost;
             }
          });
-         tax = tax * .086;
-         //@todo move up to nearest .07 cents
-         
-         discount = discount * .05;
+         tax = $(this).nearestSevenCents(tax * .086);
+         discount = $(this).ceilNearestCent(discount * .05);
+         sub_total = $(this).roundNearestCent(sub_total);
          
          total = sub_total + tax - discount;
          $('.recipes .list-group-item').last().append(''
-               + '<div>'
-                  + 'Sub Total: $' + sub_total.toFixed(2)
-               + '</div>'
-               + '<div class="sales_tax">'
-                  + 'Sales Tax: $' + tax.toFixed(2)
+               + '<div class="sub_total">'
+                  + 'Sub Total: $' + sub_total
                + '</div>'
                + '<div>'
-                  + 'Wellness Discount: ($' + discount.toFixed(2) + ')'
+                  + 'Sales Tax: $' + tax
+               + '</div>'
+               + '<div>'
+                  + 'Wellness Discount: ($' + discount + ')'
                + '</div>'
                + '<div>'
                   + 'Total Cost: <strong>$' + total.toFixed(2) + '</strong>'
