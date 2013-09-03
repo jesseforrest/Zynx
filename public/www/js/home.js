@@ -14,6 +14,21 @@
  */ 
 $(document).ready(function() {
    
+   $.fn.refreshRecipeAddForm = function(){
+      var ingredients = $('.ingredients').data('json');
+      $('#recipe_ingredients').html("");
+      $.each(ingredients, function(name, details) {
+         $('#recipe_ingredients').append(""
+            + "<p>"
+               + '<input type="text" '
+                  + 'class="form-control amount_field" '
+                  + 'placeholder="0.00" '
+                  + 'data-name="' + name + '" '
+                  + ' /> ' + name  
+            + "</p>");
+      });      
+   };
+   
    $.fn.refreshIngredients = function(){
       var ingredients = $('.ingredients').data('json');
       $('.ingredients_list').html("");
@@ -41,40 +56,7 @@ $(document).ready(function() {
       });      
    };
    
-   /**
-    * Move up to nearest .07 cents
-    * 
-    * @return float
-    */
-   $.fn.nearestSevenCents = function(amount){
-      return ((Math.ceil((amount * 100) / 7) * 7) / 100);
-   };
-   
-   /**
-    * Round up to nearest cent
-    * 
-    * @return float
-    */
-   $.fn.ceilNearestCent = function(amount){
-      return ((Math.ceil((amount * 100) / 1) * 1) / 100);
-   };
-   
-   /**
-    * Round to nearest cent
-    * 
-    * @return float
-    */
-   $.fn.roundNearestCent = function(amount){
-      return ((Math.round((amount * 100) / 1) * 1) / 100);
-   };
-   
-   // If ingredients exist
-   if ($('.ingredients').length) {
-      $(this).refreshIngredients();
-   }
-   
-   // If recipes exist
-   if ($('.recipes').length) {
+   $.fn.refreshRecipes = function(){
       var recipes = $('.recipes').data('json'),
          ingredients = $('.ingredients').data('json'),
          sub_total = 0.00,
@@ -132,6 +114,44 @@ $(document).ready(function() {
                   + 'Total Cost: <strong>$' + total.toFixed(2) + '</strong>'
                + '</div>');
       });
+   };
+   
+   /**
+    * Move up to nearest .07 cents
+    * 
+    * @return float
+    */
+   $.fn.nearestSevenCents = function(amount){
+      return ((Math.ceil((amount * 100) / 7) * 7) / 100);
+   };
+   
+   /**
+    * Round up to nearest cent
+    * 
+    * @return float
+    */
+   $.fn.ceilNearestCent = function(amount){
+      return ((Math.ceil((amount * 100) / 1) * 1) / 100);
+   };
+   
+   /**
+    * Round to nearest cent
+    * 
+    * @return float
+    */
+   $.fn.roundNearestCent = function(amount){
+      return ((Math.round((amount * 100) / 1) * 1) / 100);
+   };
+   
+   // If ingredients exist
+   if ($('.ingredients').length) {
+      $(this).refreshIngredients();
+      $(this).refreshRecipeAddForm();
+   }
+   
+   // If recipes exist
+   if ($('.recipes').length) {
+      $(this).refreshRecipes();
    }   
    
    /**
@@ -143,15 +163,64 @@ $(document).ready(function() {
    
    $(".list-group-item").hover(
       function(el){
-         $(this).children(".btn").not("#recipe_add").fadeIn('fast');
+         $(this).children(".btn").not("#recipe_add_small").fadeIn('fast');
       }, function(){
-         $(this).children(".btn").not("#recipe_add").hide();
+         $(this).children(".btn").not("#recipe_add_small").hide();
       }
    );
+
+   $("#recipe_add_small").click(function(){
+      $(this).fadeOut('fast');
+      $("#add_recipes").slideDown('slow');
+   });
    
    $("#ingredient_add_small").click(function(){
       $(this).fadeOut('fast');
       $("#add_ingredients").slideDown('slow');
+   });
+   
+   $("#recipe_add").click(function() {
+      var error = null,
+         ingredients = $('.ingredients').data('json'),
+         recipes = $('.recipes').data('json'),
+         name = $.trim($("#recipe_name").val());
+      
+      if (name == "") {
+         error = "Enter a recipe name";
+      } else if (name in recipes) {
+         error = "That recipe name already exists";
+      }
+      
+      // Show errors
+      if (error != null) {
+         $("#recipe_success").hide();
+         $("#recipe_alert").html(error);
+         $("#recipe_alert").fadeIn('fast');
+      } else {
+         // Add current recipe to recipes array
+         recipes[name] = {};
+         
+         $("#recipe_ingredients input[type=text]").each(function() {
+            if ((this.value != "") 
+               && (this.value != "0.00") 
+               && ($.isNumeric(this.value))) {
+               recipes[name][$(this).data('name')] = this.value;
+            }
+         });
+         
+         // Set the recipes back to the JSON array 
+         $('.recipes').data('json', recipes);
+         // Append new recipe
+         $(this).refreshRecipes();
+         // Show success message
+         $("#recipe_alert").hide();
+         $("#recipe_success").html('Successfully added ' + name);
+         $("#recipe_success").fadeIn('fast');
+         // Reset input field
+         $("#recipe_alert").hide();
+         $("#recipe_name").val("");
+         $("#recipe_ingredients input[type=text]").val("");
+      }
    });
    
    $("#ingredient_add").click(function() {
@@ -180,7 +249,7 @@ $(document).ready(function() {
       } else {
          var ingredients = $('.ingredients').data('json');         
          price = parseFloat(price).toFixed(2);
-         // Aad current ingredient to ingredients array
+         // Add current ingredient to ingredients array
          ingredients[name] = {};
          ingredients[name]['cost'] = price;
          ingredients[name]['is_organic'] = is_organic;
@@ -188,8 +257,9 @@ $(document).ready(function() {
          
          // Set the ingredients back to the 
          $('.ingredients').data('json', ingredients);
-         // Append new ingredient
+         // Refresh necessary areas
          $(this).refreshIngredients();
+         $(this).refreshRecipeAddForm();
          // Show success message
          $("#ingredient_alert").hide();
          $("#ingredient_success").html('Successfully added ' + name);

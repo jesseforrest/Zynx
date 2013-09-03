@@ -20,7 +20,7 @@ h1,h2,h3 {
    line-height: 12px;
 }
 
-#ingredient_success, #ingredient_alert {
+#recipe_success, #recipe_alert, #ingredient_success, #ingredient_alert {
    display: none;
 }
 
@@ -36,11 +36,20 @@ label {
    width: 160px
 }
 
+#recipe_name {
+   margin-bottom: 20px;
+}
+
+#add_recipes .amount_field {
+   width: 60px;
+   display: inline;
+}
+
 #ingredient_price {
    width: 80px;
 }
 
-#ingredient_add {
+#recipe_add, #ingredient_add {
    margin-top: 20px;
 }
 
@@ -53,7 +62,7 @@ label {
    text-align: right;
 }
 
-#recipe_add,#ingredient_add_small {
+#recipe_add_small,#ingredient_add_small {
    float: right;
 }
 
@@ -61,7 +70,7 @@ label {
    font-size: 30px;
 }
 
-#add_ingredients {
+#add_recipes, #add_ingredients {
    display: none;
 }
 

@@ -66,12 +66,36 @@
 	</div>
 	
 	<div class="recipes" data-json="<?=htmlentities(json_encode($view['recipes'])); ?>">
+	
+     <div id="add_recipes" class="panel panel-success">
+         <div class="panel-heading">
+      	   <h3 class="panel-title">Add Recipe</h3>
+         </div>
+         <div class="panel-body">
+            <div id="recipe_success" class="alert alert-success"></div>      
+         	<div id="recipe_alert" class="alert alert-danger"></div>
+         	<input type="text"
+         	   class="form-control" 
+         	   id="recipe_name"
+         	   placeholder="Recipe Name"/>
+            <div id="recipe_ingredients"></div>
+            <div class="align_right">
+               <input 
+                  type="button"
+                  class="btn btn-success"
+                  id="recipe_add"
+                  value="Add Recipe"/>
+            </div>
+         </div>
+      </div>	
+	
+	
 	   <div class="list-group">
 	      <div class="list-group-item active">
 	         <input 
                type="button"
                class="btn btn-sm btn-success"
-               id="recipe_add"
+               id="recipe_add_small"
                value="Add Recipe"/>
          	<h1 class="list-group-item-heading">Recipes</h1>
 				<p class="list-group-item-text">Below are all of your available recipes.</p>
